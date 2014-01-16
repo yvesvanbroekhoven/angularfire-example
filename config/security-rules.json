@@ -1,0 +1,28 @@
+{
+  "rules": {
+
+    "players": {
+      ".read": true,
+      "$player": {
+        ".write": true,
+        "name": {
+          ".validate": "newData.val().length > 0"
+        },
+        "email": {
+          ".validate": "newData.val().length > 0 && newData.val().contains('@')"
+        }
+      }
+    },
+
+    "unique" : {
+      "emails": {
+        ".write": true,
+        "$email": {
+          ".write": true,
+          ".validate": "!data.exists()"
+        }
+      }
+    }
+
+  }
+}
